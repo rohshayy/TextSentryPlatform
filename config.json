@@ -1,0 +1,12 @@
+{
+  "model_settings": {
+    "embedding_dim": 128,
+    "max_seq_len": 8
+  },
+  "experts": {
+    "triage": "experts/service_triage.pth",
+    "aml": "experts/service_aml.pth",
+    "sentiment": "experts/service_sentiment.pth"
+  },
+  "labels": ["triage", "aml", "sentiment"]
+}
