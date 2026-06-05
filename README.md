@@ -1,12 +1,3 @@
-The reason it pasted as a messy block of unstructured text is that the web editor on GitHub requires **raw Markdown format**. When text is copied directly from a styled web page, the hidden spacing and block styling can get corrupted, flattening everything into a single paragraph.
-
-Let’s fix this completely.
-
-Below is the **exact, raw, unflattened Markdown code block**. When you copy the text from the block below, it will retain its headings, clean bullet points, code boxes, and directory layout perfectly when saved on GitHub.
-
-### **The Clean Code Block to Copy:**
-
-```markdown
 # TextSentryPlatform: Enterprise Multi-Intent AI Routing Engine
 
 TextSentryPlatform is an asynchronous-ready, configuration-driven routing and analysis platform designed to process unstructured corporate data streams. The architecture utilizes a high-speed computational Gatekeeper (Router) to evaluate incoming user text intent and dynamically orchestrate processing workloads across a suite of completely decoupled, specialized Deep Learning LSTM Expert networks.
