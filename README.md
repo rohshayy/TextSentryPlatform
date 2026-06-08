@@ -1,6 +1,3 @@
-
-
-```markdown
 # TextSentryPlatform: Enterprise Multi-Intent AI Routing Engine
 
 TextSentryPlatform is an asynchronous-ready, configuration-driven routing and analysis platform designed to process unstructured corporate data streams. The architecture utilizes a high-speed computational Gatekeeper (Router) to evaluate incoming user text intent and dynamically orchestrate processing workloads across a suite of completely decoupled, specialized Deep Learning LSTM Expert networks exposed as an production-ready Model-as-a-Service (MaaS) API.
