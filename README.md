@@ -1,19 +1,25 @@
+
+
+```markdown
 # TextSentryPlatform: Enterprise Multi-Intent AI Routing Engine
 
-TextSentryPlatform is an asynchronous-ready, configuration-driven routing and analysis platform designed to process unstructured corporate data streams. The architecture utilizes a high-speed computational Gatekeeper (Router) to evaluate incoming user text intent and dynamically orchestrate processing workloads across a suite of completely decoupled, specialized Deep Learning LSTM Expert networks.
+TextSentryPlatform is an asynchronous-ready, configuration-driven routing and analysis platform designed to process unstructured corporate data streams. The architecture utilizes a high-speed computational Gatekeeper (Router) to evaluate incoming user text intent and dynamically orchestrate processing workloads across a suite of completely decoupled, specialized Deep Learning LSTM Expert networks exposed as an production-ready Model-as-a-Service (MaaS) API.
 
 ---
 
 ## 🏗️ System Architecture & Data Flow
 
-The platform separates responsibilities into distinct modular layers to enforce clean boundaries between ingestion, system configurations, routing, and deep analysis.
+The platform separates responsibilities into distinct modular layers to enforce clean boundaries between web ingestion, system configurations, routing, and deep analysis.
 
 ```text
-Incoming Text Stream ──► [ Data Processor Layer ] (Normalization & Tokenization)
-                                    │
-                                    ▼
-                         [ Gateway Router Network ] (Matrix Traffic Cop)
-                                    │
+Incoming Web Stream ──► [ REST API Layer (FastAPI) ] (app.py)
+                                     │
+                                     ▼
+                        [ Data Preprocessor Layer ] (data/processor.py)
+                                     │
+                                     ▼
+                         [ Gateway Router Network ] (gateway.py)
+                                     │
          ┌──────────────────────────┼──────────────────────────┐
          ▼                          ▼                          ▼
 [ Triage Expert LSTM ]    [ AML Expert LSTM ]    [ Sentiment Expert LSTM ]
@@ -21,11 +27,11 @@ Incoming Text Stream ──► [ Data Processor Layer ] (Normalization & Tokeniz
 
 ```
 
-* **Ingestion Layer (`fetch_real_data.py`)**: Connects to public dataset repositories to pull live consumer feedback, blending them with operational log templates into a structured disk database ledger.
-* **Preprocessing Pipeline (`data/processor.py`)**: Normalizes raw inputs (lowercasing, punctuation stripping), maps strings to vector matrices using a generated lexicon dictionary (`vocab.json`), and enforces static tensor shapes.
-* **Gateway Routing Network (`gateway.py`)**: A classification gatekeeper running multi-class Cross-Entropy optimization to instantly distribute text inputs to the appropriate specialist branch.
-* **Specialist Expert Networks (`experts/`)**: Independent Long Short-Term Memory (LSTM) recurrent networks built on top of an abstract interface framework (`base_experts.py`). Each model tracks sequential dependencies step-by-step to compute contextual probabilities.
-* **Central Nervous System (`orchestrator.py`)**: The application runtime engine that loads trained matrix weights (`.pth` files), coordinates the data transformation pipeline, and yields live inference scores.
+1. **Web Ingestion & Serving Layer (`app.py`)**: An asynchronous ASGI microservice built via FastAPI that listens continuously on network ports, enforces parameter types, and auto-generates interactive Swagger UI validation layouts.
+2. **Preprocessing Pipeline (`data/processor.py`)**: Normalizes raw text inputs (lowercasing, token character cleaning), maps words to vector sequences using a data-driven lexicon mapping dictionary (`vocab.json`), and enforces static tensor shapes.
+3. **Gateway Routing Network (`gateway.py`)**: A multi-class classification gatekeeper running non-gradient tracking forward inference to instantaneously determine the downstream analytical destination.
+4. **Specialist Expert Networks (`experts/`)**: Isolated Recurrent Neural Networks (LSTMs) derived from a uniform abstract class interface blueprint (`base_experts.py`). Each expert tracking text sequence structures to output localized domain predictions.
+5. **Central System Orchestration (`orchestrator.py`)**: The application platform engine that dynamically computes runtime absolute directory paths on disk, boots model parameters from memory weight binaries (`.pth`), and coordinates the full pipeline execution.
 
 ---
 
@@ -46,12 +52,43 @@ TextSentryPlatform/
 │   └── service_triage.py     # Specialist LSTM Network optimized for Operations Ticket classification
 │
 ├── .gitignore                # Production safeguard blocking local environment artifacts & bin weights
+├── app.py                    # FastAPI Web Application Gateway wrapping the Orchestrator service layer
 ├── config.json               # Global configuration matrix separating environment variables from logic
+├── Dockerfile                # Environment-invariant container build recipe tracking system variables
 ├── fetch_real_data.py        # Automated ETL ingestion script compiling external public data
 ├── gateway.py                # Linear Gatekeeper Router model architecture layout
 ├── orchestrator.py           # Core platform execution engine coordinating production inference
+├── requirements.txt          # Production environment dependency tracking ledger
 ├── train_platform.py         # Deep Learning bootcamp training execution and backpropagation script
 └── vocab.json                # Organic dictionary mapping alphanumeric tokens to numerical indices
+
+```
+
+---
+
+## 🚀 Local Execution & Containerized Serving Protocols
+
+### 1. Running the Asynchronous Live API Locally
+
+To start the Model-as-a-Service system locally using the Uvicorn engine, execute the following command structure:
+
+```bash
+uvicorn app:app --reload --port 8000
+
+```
+
+* **Interactive Dashboard Portal**: Once active, access the auto-generated visual OpenAPI verification panel directly at `http://127.0.0.1:8000/docs` to run manual string experiments.
+
+### 2. Standardized Production Container Deployment (Docker)
+
+To enforce absolute environment invariance across arbitrary hosting infrastructures (AWS, Azure, GCP Clouds), build and launch the immutable system capsule:
+
+```bash
+# Build the invariant system image from the Dockerfile layout
+docker build -t textsentry-platform-engine:v1 .
+
+# Run the containerized engine mapping host web portal networks
+docker run -d -p 8000:8000 textsentry-platform-engine:v1
 
 ```
 
@@ -79,3 +116,8 @@ When auditing this repository, a senior engineer will note deliberate architectu
 * **Engineering Justification**: The primary engineering objective of this milestone was validating asynchronous structural mechanics, runtime memory allocations, decoupled model state persistence, and loose decoupling via abstract classes.
 * **Next Production Phase**: Integrate automated stratified 80/20 train-test partitioning blocks within the data loader loop, and generate live Confusion Matrices along with explicit Precision, Recall, and F1-Score metrics to explicitly log and prevent overfitting.
 
+```
+
+
+
+```
